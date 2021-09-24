@@ -16,41 +16,41 @@ public class Result {
 		double e=Result.ddoit(4800, 4);
 		System.out.println(a+"  "+b+"  "+c+"  "+d+"  "+e+"  ");
 	}
-	public static double ddoit(int N,int type) {
-			InsertionSort<Integer> insertsort= new InsertionSort<Integer>();
-			Supplier<Integer[]> supplier= ()->arr1(N,type);
-			Consumer<Integer[]> consumer=(t)->{insertsort.sort(t,0,t.length);};
-			Benchmark_Timer<Integer[]> bench= new	Benchmark_Timer<Integer[]>("resu",consumer);
-			double time =bench.runFromSupplier(supplier, 500);
+	public static double ddoit(int N, int type) {
+			InsertionSort<Integer> insertsort = new InsertionSort<Integer>();
+			Supplier<Integer[]> supplier = () -> arr1(N,type);
+			Consumer<Integer[]> consumer = (t) -> {insertsort.sort(t,0,t.length);};
+			Benchmark_Timer<Integer[]> bench = new	Benchmark_Timer<Integer[]>("resu",consumer);
+			double time =bench.runFromSupplier(supplier, 100);
 			return time;
 	}
 
-	private static Integer[] arr1(int n,int type) {
+	private static Integer[] arr1(int n, int type) {
 		// TODO Auto-generated method stub
 		Integer[] arr=new Integer[n];
 		
 		if(type==1)
 		{
-			for(int i=0;i<arr.length;i++)
+			for(int i=0;i<n;i++)
 			{
 				arr[i]=i;
 			}
 		}else if(type==2)
 		{
-			for(int i=0;i<arr.length;i++)
+			for(int i=0;i<n;i++)
 			{
 				arr[i]=n-i;
 			}
 		}else if(type==3)
 		{
-			for(int i=0;i<arr.length;i++)
+			for(int i=0;i<n;i++)
 			{
 				arr[i]=(int)Math.random()*n;
 			}
 		}
 		else
 		{
-			for(int i=0;i<arr.length;i++)
+			for(int i=0;i<n;i++)
 			{
 				if(i<n/2) arr[i]=(int)Math.random()*n;
 				else arr[i]=i;
