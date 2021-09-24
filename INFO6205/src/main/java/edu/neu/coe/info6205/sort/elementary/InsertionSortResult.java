@@ -1,5 +1,6 @@
 package edu.neu.coe.info6205.sort.elementary;
 
+import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -51,13 +52,18 @@ public class InsertionSortResult {
 	} 
 
 	public static void main(String[] args) {
-		int[] n = {100,200,300,400,500,600,700};
+		int[] n = {1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,16000,32000,64000};
+		ArrayList<Double> meanTimeList = new ArrayList<Double>();
 		for (int i = 1; i < 5; i++) {
 			System.out.println("type: "+i);
 			for (int j : n) {
-			double meanT=InsertionSortResult.ddoit(j, i);
-			System.out.println(meanT);
+				double meanT=InsertionSortResult.ddoit(j, i);
+				meanTimeList.add(meanT);
 			}
+			for (double k : meanTimeList) {
+				System.out.println(k);
+			}
+			meanTimeList.clear();
 		}
 	}
 }
