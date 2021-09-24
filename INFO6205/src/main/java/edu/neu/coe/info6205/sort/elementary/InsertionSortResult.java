@@ -17,7 +17,6 @@ public class InsertionSortResult {
 	}
 
 	private static Integer[] arr(int n, int type) {
-		// TODO Auto-generated method stub
 		Integer[] arr1=new Integer[n];
 		
 		if(type==1)
@@ -52,13 +51,14 @@ public class InsertionSortResult {
 	} 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		double a=InsertionSortResult.ddoit(300, 4);
-		double b=InsertionSortResult.ddoit(600, 4);
-		double c=InsertionSortResult.ddoit(1200, 4);
-		double d=InsertionSortResult.ddoit(2400, 4);
-		double e=InsertionSortResult.ddoit(4800, 4);
-		System.out.println(a+"  "+b+"  "+c+"  "+d+"  "+e+"  ");
+		int[] n = {100,200,300,400,500,600,700};
+		for (int i = 1; i < 5; i++) {
+			System.out.println("type: "+i);
+			for (int j : n) {
+			double meanT=InsertionSortResult.ddoit(j, i);
+			System.out.println(meanT);
+			}
+		}
 	}
 }
 

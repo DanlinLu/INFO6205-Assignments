@@ -207,8 +207,8 @@ public class Timer {
      */
     private static double toMillisecs(long ticks) {
         // TO BE IMPLEMENTED
-    	double millnano=ticks/1000000.0000;
-    	return millnano;
+    	double millsecs=ticks/1000000.00;
+    	return millsecs;
     }
 
     final static LazyLogger logger = new LazyLogger(Timer.class);
