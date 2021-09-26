@@ -12,7 +12,7 @@ public class InsertionSortResult {
 			InsertionSort<Integer> insertionSort = new InsertionSort<Integer>();
 			Supplier<Integer[]> supplier = () -> arr(N,type);
 			Consumer<Integer[]> consumer = (f) -> {insertionSort.sort(f,0,f.length);};
-			Benchmark_Timer<Integer[]> benchMark = new	Benchmark_Timer<Integer[]>("result",consumer);
+			Benchmark_Timer<Integer[]> benchMark = new Benchmark_Timer<Integer[]>("result",consumer);
 			//benchMark.run(arr(N,type), 10);
 			double time = benchMark.runFromSupplier(supplier, 10);
 			return time;
