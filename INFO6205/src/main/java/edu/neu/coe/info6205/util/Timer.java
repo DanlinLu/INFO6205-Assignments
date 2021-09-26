@@ -194,7 +194,7 @@ public class Timer {
      */
     private static long getClock() {
         // TO BE IMPLEMENTED
-    	long nano=System.nanoTime();
+    	long nano = System.nanoTime();
     	return nano;
     }
 
@@ -207,7 +207,7 @@ public class Timer {
      */
     private static double toMillisecs(long ticks) {
         // TO BE IMPLEMENTED
-    	double millsecs=ticks/1000000.00;
+    	double millsecs = ticks/1000000.00;
     	return millsecs;
     }
 
