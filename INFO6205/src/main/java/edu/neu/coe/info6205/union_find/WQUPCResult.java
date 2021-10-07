@@ -5,16 +5,14 @@ import java.util.Random;
 public class WQUPCResult {
 	
 	public static int count(int n) {
-		UF_HWQUPC qupc = new UF_HWQUPC(n);
-		
+		UF_HWQUPC qupc = new UF_HWQUPC(n, false);
 		Random rand = new Random();
-		
 		int num = 0;
 		while(qupc.components() != 1) {
-			int rand_int1 = rand.nextInt(n);
-	        int rand_int2 = rand.nextInt(n);
-	        if (qupc.find(rand_int1) != qupc.find(rand_int2)) {
-	        	qupc.union(rand_int1, rand_int2);
+			int r1 = rand.nextInt(n);
+	        int r2 = rand.nextInt(n);
+	        if (!qupc.connected(r1, r2)) {
+	        	qupc.union(r1, r2);
 	        }
 	        num++;
 		}
@@ -22,16 +20,17 @@ public class WQUPCResult {
 	}
 	
 	public static void main(String args[]) {
-		int[] n = {1000,2000,3000,4000,5000,6000,7000,8000,9000,10000};
-		int iteration = 1000;
-		double sum = 0;
-		for (int j : n) {
+		//int[] n = {20,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
+		int iteration = 50;
+		
+		for (int j = 100; j <= 20001; j += 50) {
+		int sum = 0;
 		for (int i = 0; i < iteration; i++) {
 			sum += count(j);
 		}
-		double res = sum/iteration;
-		//System.out.println("n: "+j+", "+"average iterations: "+res);
-		System.out.println(res);
+		int res = sum/iteration;
+		System.out.println("n: "+j+", "+"average num of pairs: "+res);
+		//System.out.println(res);
 		}
 	}
 	

@@ -193,16 +193,5 @@ public class UF_HWQUPC implements UF {
     private void doPathCompression(int i) {
         // TO BE IMPLEMENTED update parent to value of grandparent
     	parent[i] = parent[parent[i]];
-    	/*
-    	pathCompression = false;
-    	int root = find(i);
-    	pathCompression = true;
-    	int last;
-    	while (parent[i] != root) {
-    		last = parent[i];
-    		parent[i] = root;
-    		i = last;
-    	}
-    	*/
     }
 }
