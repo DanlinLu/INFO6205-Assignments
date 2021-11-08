@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -15,15 +16,16 @@ import java.util.concurrent.ForkJoinPool;
  * TODO tidy it up a bit.
  */
 public class Main {
-
+	static ForkJoinPool myPool= new ForkJoinPool(8);
     public static void main(String[] args) {
         processArgs(args);
-        System.out.println("Degree of parallelism: " + ForkJoinPool.getCommonPoolParallelism());
+        System.out.println("Degree of parallelism: " + myPool.getParallelism());//ForkJoinPool.getCommonPoolParallelism());
         Random random = new Random();
-        int[] array = new int[2000000];
+        int size = 1000000;
+        int[] array = new int[size];
         ArrayList<Long> timeList = new ArrayList<>();
-        for (int j = 50; j < 100; j++) {
-            ParSort.cutoff = 10000 * (j + 1);
+        for (double j = 0.05; j < 1.05; j = j + 0.05) {
+            ParSort.cutoff = (int) Math.round(size * j);
             // for (int i = 0; i < array.length; i++) array[i] = random.nextInt(10000000);
             long time;
             long startTime = System.currentTimeMillis();
@@ -34,11 +36,13 @@ public class Main {
             long endTime = System.currentTimeMillis();
             time = (endTime - startTime);
             timeList.add(time);
+            double ratio = (double) ParSort.cutoff / size;
 
 
-            System.out.println("cutoff：" + (ParSort.cutoff) + "\t\t10times Time:" + time + "ms");
+            System.out.println("cutoff ratio：" + (ratio) + "\t\t10times Time:" + time + "ms");
 
         }
+        //System.out.println(Collections.min(timeList));
         try {
             FileOutputStream fis = new FileOutputStream("./src/result.csv");
             OutputStreamWriter isr = new OutputStreamWriter(fis);

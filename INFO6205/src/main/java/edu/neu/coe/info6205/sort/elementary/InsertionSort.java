@@ -69,6 +69,7 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
         			helper.swap(xs, j-1, j);
         			}
         		}
+        	
         	}
     }
 
