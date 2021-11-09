@@ -39,7 +39,7 @@ public class Main {
             double ratio = (double) ParSort.cutoff / size;
 
 
-            System.out.println("cutoff ratio：" + (ratio) + "\t\tTime:" + time / 10 + "ms");
+            System.out.println("cutoff ratio：" + (ratio) + "\t\tTime:" + (double) time / 10 + "ms");
 
         }
         //System.out.println(Collections.min(timeList));
