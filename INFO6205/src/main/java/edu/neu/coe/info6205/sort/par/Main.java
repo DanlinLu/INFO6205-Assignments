@@ -16,7 +16,7 @@ import java.util.concurrent.ForkJoinPool;
  * TODO tidy it up a bit.
  */
 public class Main {
-	static ForkJoinPool myPool= new ForkJoinPool(8);
+	static ForkJoinPool myPool= new ForkJoinPool(8); //degree of parallel
     public static void main(String[] args) {
         processArgs(args);
         System.out.println("Degree of parallelism: " + myPool.getParallelism());//ForkJoinPool.getCommonPoolParallelism());
@@ -39,7 +39,7 @@ public class Main {
             double ratio = (double) ParSort.cutoff / size;
 
 
-            System.out.println("cutoff ratio：" + (ratio) + "\t\t10times Time:" + time + "ms");
+            System.out.println("cutoff ratio：" + (ratio) + "\t\tTime:" + time / 10 + "ms");
 
         }
         //System.out.println(Collections.min(timeList));
@@ -47,10 +47,10 @@ public class Main {
             FileOutputStream fis = new FileOutputStream("./src/result.csv");
             OutputStreamWriter isr = new OutputStreamWriter(fis);
             BufferedWriter bw = new BufferedWriter(isr);
-            int j = 0;
+            double j = 0;
             for (long i : timeList) {
-                String content = (double) 10000 * (j + 1) / 2000000 + "," + (double) i / 10 + "\n";
-                j++;
+                String content = (double) (j + 0.05) + "," + (double) i / 10 + "\n";
+                j = j + 0.05;
                 bw.write(content);
                 bw.flush();
             }
